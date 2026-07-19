@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3b2f27">
+  <meta name="description" content="L'orologio della piazza con i rintocchi autentici delle ore e dei quarti.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Orologio della Piazza</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <p class="eyebrow">IL CAMPANILE NEL TELEFONO</p>
+      <h1>Orologio della Piazza</h1>
+      <p id="status" class="status">Campane non attive</p>
+    </header>
+
+    <section class="clock-card" aria-label="Orologio analogico">
+      <div class="clock-wrap">
+        <img class="clock-photo" src="assets/orologio.jpg" alt="Quadrante dell'orologio della piazza">
+        <div class="photo-softener"></div>
+        <div class="hand hour-hand" id="hourHand"></div>
+        <div class="hand minute-hand" id="minuteHand"></div>
+        <div class="hand second-hand" id="secondHand"></div>
+        <div class="pin"></div>
+      </div>
+      <div class="digital-time" id="digitalTime">--:--:--</div>
+      <div class="date" id="dateText"></div>
+    </section>
+
+    <section class="controls">
+      <button id="enableButton" class="primary">🔔 Attiva campane</button>
+      <button id="testButton">Prova le 4:45</button>
+      <button id="installButton" hidden>Installa l’app</button>
+
+      <label class="range-row">
+        <span>Volume</span>
+        <input id="volume" type="range" min="0" max="1" value="0.85" step="0.05">
+      </label>
+
+      <label class="switch-row">
+        <span>Modalità silenziosa notturna</span>
+        <input id="nightMode" type="checkbox" checked>
+      </label>
+
+      <div class="night-grid">
+        <label>Da <input id="nightStart" type="time" value="22:00"></label>
+        <label>A <input id="nightEnd" type="time" value="08:00"></label>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Sequenza del campanile</h2>
+      <p><strong>:00</strong> ore • <strong>:15</strong> ore + 1 quarto • <strong>:30</strong> ore + 2 quarti • <strong>:45</strong> ore + 3 quarti.</p>
+      <p class="small">La pagina deve restare aperta perché i browser non garantiscono audio automatico quando la webapp viene chiusa o sospesa.</p>
+    </section>
+  </main>
+
+  <audio id="hourBell" preload="auto" src="assets/campana_ore.mp3"></audio>
+  <audio id="quarterBell" preload="auto" src="assets/campana_quarti.mp3"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
